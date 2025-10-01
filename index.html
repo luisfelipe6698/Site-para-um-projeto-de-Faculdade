@@ -4,75 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sistema de Faltas – UCL</title>
-  <style>
-    :root{
-      --bg:#f50000;
-      --panel:#ffffff;
-      --muted:#e9edf1;
-      --text:#242323;
-      --soft:#000000;
-      --brand:#a76529;
-      --accent:#e7e5e5;
-      --danger:#ef4444;
-      --warn:#533e29;
-      --ok:#ffffff;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,#e6e6e6 0%, #68698f 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;color:var(--text);}
-    header{position:sticky;top:0;z-index:5;background:rgba(201, 202, 207, 0.7);backdrop-filter: blur(8px);border-bottom:1px solid rgba(240, 234, 234, 0.05);}
-    .bar{max-width:1200px;margin:auto;display:flex;align-items:center;gap:16px;padding:14px 20px}
-    .logo{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.4px}
-    .logo .dot{width:12px;height:12px;border-radius:999px;background:radial-gradient(circle at 30% 30%, #000000 0, #ffffff 40%, #020202 60%, #ffffff 100%);box-shadow:0 0 20px rgba(34,197,94,.5)}
-    .spacer{flex:1}
-    nav{display:flex;flex-wrap:wrap;gap:8px}
-    nav button{background:transparent;border:1px solid rgba(216, 90, 90, 0.15);color:var(--text);padding:8px 12px;border-radius:12px;cursor:pointer}
-    nav button.active, nav button:hover{border-color:var(--accent);box-shadow:0 0 0 2px rgba(183, 187, 190, 0.15) inset}
-    .logo-image{height: 100%;width: 80%;}
-
-    .wrap{max-width:1200px;margin:22px auto;padding:0 20px}
-    .grid{display:grid;grid-template-columns: 240px 1fr; gap:22px}
-
-    .side{position:sticky; top:80px; align-self:start; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:14px; border-radius:var(--radius); box-shadow: var(--shadow)}
-    .side h3{margin:6px 6px 10px;font-size:14px;font-weight:700;color:var(--text);opacity:.9}
-    .menu{display:grid; gap:8px}
-    .menu button{all:unset; display:block; padding:10px 12px; border-radius:12px; cursor:pointer; color:#535252}
-    .menu button:hover, .menu button.active{background:rgba(96,165,250,.12); color:#e5f1ff}
-
-    .panel{background:rgba(255, 250, 250, 0.03); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow: var(--shadow); padding:18px}
-    .title{display:flex; align-items:center; gap:10px; margin:0 0 14px}
-    .title .pill{font-size:12px; padding:4px 8px; border:1px solid rgba(255,255,255,.15); border-radius:999px; color:#cbd5e1}
-
-    form{display:grid; gap:12px}
-    .row{display:grid; gap:12px}
-    @media(min-width:640px){.row{grid-template-columns: repeat(2, 1fr)}}
-    label{font-size:12px; color:#000000}
-    input, select{width:100%; background:var(--panel); color:var(--text); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px; outline:none}
-    input:focus, select:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(96,165,250,.15)}
-
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-    .btn{border:0; border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:600;}
-    .btn.primary{background:linear-gradient(135deg, var(--brand), #472e0c); color:#fffdfb}
-    .btn.secondary{background:rgba(68, 62, 62, 0.986); color:#f3f1f1}
-    .btn.danger{background:rgba(0, 0, 0, 0.18); color:#fecaca}
-    .btn:hover{filter:brightness(1.05)}
-
-    table{width:100%; border-collapse: collapse; overflow:hidden; border-radius:12px; font-size:14px}
-    thead{background:rgba(255,255,255,.05)}
-    th, td{padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.06); text-align:left}
-    tbody tr:hover{background:rgba(255,255,255,.03)}
-    .badge{display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,.15)}
-    .badge.ok{background:rgba(16,185,129,.15); color:#bbf7d0}
-    .badge.no{background:rgba(239,68,68,.15); color:#fecaca}
-
-    .hidden{display:none !important}
-    .hint{font-size:12px; color:#9ca3af}
-    .search{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
-
-    footer{opacity:.7; font-size:12px; text-align:center; padding:24px 0}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -92,231 +24,178 @@
       </aside>
 
       <main id="screens">
-        <!-- Tela de Login + Cadastro de Usuário -->
-<section class="panel" id="tela-login">
-  <h2 class="title">Acesso ao Sistema</h2>
-  <form id="formLogin">
-    <div class="row">
-      <div>
-        <label for="loginEmail">Email</label>
-        <input id="loginEmail" type="email" placeholder="seu.email" required />
-      </div>
-      <div>
-        <label for="loginSenha">Senha</label>
-        <input id="loginSenha" type="password" placeholder="••••••••" required />
-      </div>
-    </div>
-    <div class="actions">
-      <button class="btn primary" type="submit">Entrar</button>
-      <button class="btn secondary" type="button" id="btnEsqueci">Esqueci minha senha</button>
-    </div>
-    <p id="hintLogin"></p>
-  </form>
-
-  <hr style="margin:18px 0; border:0; border-top:1px solid rgba(255,255,255,.1)" />
-
-  <h3 style="margin:0 0 10px; font-size:16px">Novo usuário</h3>
-  <form id="formUsuario">
-    <div class="row">
-      <div>
-        <label for="usuarioNome">Nome</label>
-        <input id="usuarioNome" type="text" required />
-      </div>
-      <div>
-        <label for="usuarioEmail">E-mail</label>
-        <input id="usuarioEmail" type="email" required />
-      </div>
-    </div>
-    <div class="row">
-      <div>
-        <label for="usuarioSenha">Senha</label>
-        <input id="usuarioSenha" type="password" required />
-      </div>
-      <div>
-        <label for="usuarioTipo">Tipo de Usuário</label>
-        <select id="usuarioTipo" required>
-          <option value="">Selecione</option>
-          <option>Professor</option>
-          <option>Secretária</option>
-        </select>
-      </div>
-    </div>
-    <div class="actions">
-      <button class="btn primary" type="submit">Cadastrar</button>
-    </div>
-    <p class="hint" id="hintUsuario"></p>
-  </form>
-</section>
-
-
-        <!-- Tela de Cadastro de Aluno -->
-        <section class="panel hidden" id="tela-cadastro-aluno">
-          <h2 class="title">Cadastro de Aluno <span class="pill"></span></h2>
-          <form id="formAluno">
-            <input type="hidden" id="alunoId" />
-            <div class="row">
-              <div>
-                <label for="alunoNome">Nome</label>
-                <input id="alunoNome" type="text" required />
+        <!-- ================== LOGIN ================== -->
+        <section id="tela-login">
+          <div class="panel">
+            <h2 class="title">Login</h2>
+            <form id="formLogin">
+              <label>Email</label>
+              <input id="loginEmail" type="email" required />
+              <label>Senha</label>
+              <input id="loginSenha" type="password" required />
+              <div class="actions">
+                <button class="btn primary" type="submit">Entrar</button>
               </div>
-              <div>
-                <label for="alunoMatricula">Matrícula</label>
-                <input id="alunoMatricula" type="text" required />
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                <label for="alunoTurma">Turma</label>
-                <input id="alunoTurma" type="text" placeholder="ex.:A ou B" required />
-              </div>
-            </div>
-            <div class="actions">
-              <button class="btn primary" type="submit" id="btnSalvarAluno">Salvar</button>
-              <button class="btn secondary" type="button" id="btnCancelarAluno">Cancelar</button>
-            </div>
-            <p class="hint" id="hintAluno"></p>
-          </form>
-        </section>
-
-        <!-- Tela de Consulta de Alunos -->
-        <section class="panel hidden" id="tela-consulta-alunos">
-          <h2 class="title">Consulta de Alunos <span class="pill"></span></h2>
-          <div class="search">
-            <input id="buscaAluno" type="text" placeholder="Buscar por nome ou matrícula" />
-            <button class="btn secondary" id="btnNovoAluno">+ Novo aluno</button>
-          </div>
-          <div class="tablewrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Matrícula</th>
-                  <th>Turma</th>
-                  <th style="width:150px">Ações</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyAlunos"></tbody>
-            </table>
+              <div class="hint" id="hintLogin"></div>
+            </form>
+            <p style="margin-top:12px;font-size:13px;">Não tem conta? 
+              <a href="#" onclick="setScreen('tela-cadastro-usuario')">Cadastre-se</a>
+            </p>
           </div>
         </section>
 
-        <!-- Tela de Registro de Faltas -->
-        <section class="panel hidden" id="tela-registro-faltas">
-          <h2 class="title">Registro de Faltas <span class="pill"></span></h2>
-          <form id="formFalta">
-            <div class="row">
-              <div>
-                <label for="faltaAluno">Aluno</label>
-                <select id="faltaAluno" required></select>
+        <!-- ================== CADASTRO DE USUÁRIO ================== -->
+        <section id="tela-cadastro-usuario" class="hidden">
+          <div class="panel">
+            <h2 class="title">Cadastro de Usuário</h2>
+            <form id="formUsuario">
+              <label>Nome</label>
+              <input id="usuarioNome" required />
+              <label>Email</label>
+              <input id="usuarioEmail" type="email" required />
+              <label>Senha</label>
+              <input id="usuarioSenha" type="password" required />
+              <div class="actions">
+                <button class="btn primary" type="submit">Cadastrar</button>
+                <button class="btn secondary" type="button" onclick="setScreen('tela-login')">Cancelar</button>
               </div>
-              <div>
-                <label for="faltaData">Data</label>
-                <input id="faltaData" type="date" required />
-              </div>
-            </div>
-            <div class="row">
-              <div>
-                <label>Situação</label>
-                <div class="actions">
-                  <label><input type="radio" name="situacao" value="PRESENCA" checked /> Presença</label>
-                  <label><input type="radio" name="situacao" value="FALTA" /> Falta</label>
-                </div>
-              </div>
-            </div>
-            <div class="actions">
-              <button class="btn primary" type="submit">Registrar</button>
-            </div>
-            <p class="hint" id="hintFalta"></p>
-          </form>
-        </section>
-
-        <!-- Tela de Histórico de Faltas -->
-        <section class="panel hidden" id="tela-historico-faltas">
-          <h2 class="title">Histórico de Faltas <span class="pill"></span></h2>
-          <div class="row">
-            <div>
-              <label for="histAluno">Aluno</label>
-              <select id="histAluno">
-                <option value="">Todos</option>
-              </select>
-            </div>
-            <div>
-              <label for="histTurma">Turma</label>
-              <input id="histTurma" type="text" placeholder="ex.: A ou B" />
-            </div>
-            <div>
-              <label for="histDe">De</label>
-              <input id="histDe" type="date" />
-            </div>
-            <div>
-              <label for="histAte">Até</label>
-              <input id="histAte" type="date" />
-            </div>
-          </div>
-          <div class="actions" style="margin-top:12px">
-            <button class="btn secondary" id="btnFiltrarHist">Aplicar filtros</button>
-            <button class="btn" id="btnLimparHist">Limpar</button>
-          </div>
-          <div class="tablewrap" style="margin-top:12px">
-            <table>
-              <thead>
-                <tr>
-                  <th>Data</th>
-                  <th>Aluno</th>
-                  <th>Matrícula</th>
-                  <th>Turma</th>
-                  <th>Situação</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyHistorico"></tbody>
-            </table>
+              <div class="hint" id="hintUsuario"></div>
+            </form>
           </div>
         </section>
 
-        <!-- Tela de Relatórios de Faltas -->
-        <section class="panel hidden" id="tela-relatorios">
-          <h2 class="title">Relatórios de Faltas <span class="pill"></span></h2>
-          <div class="row">
-            <div>
-              <label for="repDe">De</label>
-              <input id="repDe" type="date" />
-            </div>
-            <div>
-              <label for="repAte">Até</label>
-              <input id="repAte" type="date" />
-            </div>
+        <!-- ================== CADASTRO DE ALUNO ================== -->
+        <section id="tela-cadastro-aluno" class="hidden">
+          <div class="panel">
+            <h2 class="title">Cadastro de Aluno</h2>
+            <form id="formAluno">
+              <input type="hidden" id="alunoId" />
+              <label>Nome</label>
+              <input id="alunoNome" required />
+              <label>Matrícula</label>
+              <input id="alunoMatricula" required />
+              <label>Turma</label>
+              <input id="alunoTurma" required />
+              <div class="actions">
+                <button class="btn primary" type="submit">Salvar</button>
+                <button class="btn secondary" type="button" id="btnCancelarAluno">Cancelar</button>
+              </div>
+              <div class="hint" id="hintAluno"></div>
+            </form>
           </div>
-          <div class="actions" style="margin:12px 0 20px">
-            <button class="btn secondary" id="btnGerarRel">Gerar Relatórios</button>
-          </div>
+        </section>
 
-          <div class="panel" style="padding:12px">
-            <h3>Relatório por Aluno</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Aluno</th>
-                  <th>Turma</th>
-                  <th>Presenças</th>
-                  <th>Faltas</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyRepAluno"></tbody>
-            </table>
+        <!-- ================== CONSULTA DE ALUNOS ================== -->
+        <section id="tela-consulta-alunos" class="hidden">
+          <div class="panel">
+            <h2 class="title">Consulta de Alunos</h2>
+            <div class="search">
+              <input id="buscaAluno" placeholder="Buscar por nome ou matrícula..." />
+              <button class="btn primary" id="btnNovoAluno" type="button">+ Novo</button>
+            </div>
+            <div class="tablewrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Matrícula</th>
+                    <th>Turma</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyAlunos"></tbody>
+              </table>
+            </div>
           </div>
+        </section>
 
-          <div class="panel" style="padding:12px; margin-top:14px">
-            <h3>Relatório por Turma</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Turma</th>
-                  <th>Presenças</th>
-                  <th>Faltas</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyRepTurma"></tbody>
-            </table>
+        <!-- ================== REGISTRO DE FALTAS ================== -->
+        <section id="tela-registro-faltas" class="hidden">
+          <div class="panel">
+            <h2 class="title">Registro de Faltas</h2>
+            <form id="formFalta">
+              <label>Aluno</label>
+              <select id="faltaAluno"></select>
+              <label>Data</label>
+              <input type="date" id="faltaData" required />
+              <label>Situação</label>
+              <div>
+                <label><input type="radio" name="situacao" value="PRESENCA" checked /> Presença</label>
+                <label><input type="radio" name="situacao" value="FALTA" /> Falta</label>
+              </div>
+              <div class="actions">
+                <button class="btn primary" type="submit">Registrar</button>
+              </div>
+              <div class="hint" id="hintFalta"></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================== HISTÓRICO DE FALTAS ================== -->
+        <section id="tela-historico-faltas" class="hidden">
+          <div class="panel">
+            <h2 class="title">Histórico de Faltas</h2>
+            <div class="search">
+              <select id="histAluno"></select>
+              <input id="histTurma" placeholder="Turma" />
+              <input type="date" id="histDe" />
+              <input type="date" id="histAte" />
+              <button class="btn primary" id="btnFiltrarHist" type="button">Filtrar</button>
+              <button class="btn secondary" id="btnLimparHist" type="button">Limpar</button>
+            </div>
+            <div class="tablewrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>Matrícula</th>
+                    <th>Turma</th>
+                    <th>Situação</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyHistorico"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================== RELATÓRIOS ================== -->
+        <section id="tela-relatorios" class="hidden">
+          <div class="panel">
+            <h2 class="title">Relatórios</h2>
+            <div class="search">
+              <input type="date" id="repDe" />
+              <input type="date" id="repAte" />
+              <button class="btn primary" id="btnGerarRel" type="button">Gerar</button>
+            </div>
+            <h3>Por Aluno</h3>
+            <div class="tablewrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Turma</th>
+                    <th>Presenças</th>
+                    <th>Faltas</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyRepAluno"></tbody>
+              </table>
+            </div>
+            <h3>Por Turma</h3>
+            <div class="tablewrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Turma</th>
+                    <th>Presenças</th>
+                    <th>Faltas</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyRepTurma"></tbody>
+              </table>
+            </div>
           </div>
         </section>
       </main>
@@ -325,244 +204,6 @@
     <footer>© <span id="year"></span> Sistema de Faltas • Projeto Eu sou Ninja</footer>
   </div>
 
-  <script>
-    /*const state = {
-      logged: false,
-      users: [],
-      alunos: [
-        {id: 1, nome:'Ana Silva', matricula:'2025001', turma:'A'},
-        {id: 2, nome:'Bruno Souza', matricula:'2025002', turma:'B'},
-        {id: 3, nome:'Carla Nunes', matricula:'2025003', turma:'A'},
-      ],
-      faltas: []
-    }*/
-    const state={logged:false, current: 'tela-login', users:JSON.parse(localStorage.getItem("usuarios")||"[]"), alunos:[], faltas:[]};
-    let seqAluno = state.alunos.length + 1
-    let seqFalta = 1
-
-    const $ = sel => document.querySelector(sel)
-    const $$ = sel => Array.from(document.querySelectorAll(sel))
-    const fmt = new Intl.DateTimeFormat('pt-BR')
-
-    function setScreen(id){
-      state.current = id
-      $$('#screens > section').forEach(s => s.classList.toggle('hidden', s.id !== id))
-      $$('#sideMenu button, #topNav button').forEach(b => b.classList.toggle('active', b.dataset.target === id))
-      if(id !== 'tela-login') fillCombos()
-      if(id === 'tela-consulta-alunos') renderAlunos()
-      if(id === 'tela-historico-faltas') renderHistorico()
-    }
-
-    // Navegação
-    function setupNav(){
-      const menuItems = [
-        {id:'tela-cadastro-aluno', label:'Cadastro Aluno'},
-        {id:'tela-consulta-alunos', label:'Consulta Alunos'},
-        {id:'tela-registro-faltas', label:'Registro Faltas'},
-        {id:'tela-historico-faltas', label:'Histórico'},
-        {id:'tela-relatorios', label:'Relatórios'}
-      ]
-      $('#sideMenu').innerHTML = menuItems.map(m=>`<button data-target="${m.id}">${m.label}</button>`).join('')
-      $$('#sideMenu button, #topNav button').forEach(b=>{
-        b.addEventListener('click',()=>setScreen(b.dataset.target))
-      })
-    }
-
-    /*
-    $('#formUsuario').addEventListener('submit', e=>{
-      e.preventDefault()
-      const nome=$('#usuarioNome').value.trim()
-      const email=$('#usuarioEmail').value.trim()
-      const senha=$('#usuarioSenha').value.trim()
-      const tipo=$('#usuarioTipo').value
-      if(state.users.some(u=>u.email===email)){
-        $('#hintUsuario').textContent = 'Já existe um usuário com este e-mail.'
-        return
-      }
-      state.users.push({id:state.users.length+1, nome,email,senha,tipo})
-      $('#formUsuario').reset()
-      $('#hintUsuario').textContent = 'Usuário cadastrado com sucesso.'
-    })*/
-
-    // Alunos
-    function renderAlunos(){
-      const busca=$('#buscaAluno').value.toLowerCase()
-      $('#tbodyAlunos').innerHTML = state.alunos
-        .filter(a=>a.nome.toLowerCase().includes(busca)||a.matricula.includes(busca))
-        .map(a=>`
-          <tr>
-            <td>${a.nome}</td>
-            <td>${a.matricula}</td>
-            <td>${a.turma}</td>
-            <td>
-              <button class="btn secondary" data-edit="${a.id}">Editar</button>
-              <button class="btn danger" data-del="${a.id}">Excluir</button>
-            </td>
-          </tr>`).join('')
-    }
-    $('#buscaAluno').addEventListener('input', renderAlunos)
-    $('#btnNovoAluno').addEventListener('click',()=>setScreen('tela-cadastro-aluno'))
-    $('#tbodyAlunos').addEventListener('click', e=>{
-      if(e.target.dataset.edit){
-        const a=state.alunos.find(x=>x.id==e.target.dataset.edit)
-        $('#alunoId').value=a.id
-        $('#alunoNome').value=a.nome
-        $('#alunoMatricula').value=a.matricula
-        $('#alunoTurma').value=a.turma
-        setScreen('tela-cadastro-aluno')
-      }
-      if(e.target.dataset.del){
-        if(confirm('Excluir aluno?')){
-          state.alunos=state.alunos.filter(x=>x.id!=e.target.dataset.del)
-          renderAlunos()
-        }
-      }
-    })
-    $('#formAluno').addEventListener('submit', e=>{
-      e.preventDefault()
-      const id=$('#alunoId').value
-      const nome=$('#alunoNome').value.trim()
-      const matricula=$('#alunoMatricula').value.trim()
-      const turma=$('#alunoTurma').value.trim()
-      if(id){
-        const a=state.alunos.find(x=>x.id==id)
-        a.nome=nome;a.matricula=matricula;a.turma=turma
-      }else{
-        if(state.alunos.some(x=>x.matricula===matricula)){
-          $('#hintAluno').textContent='Já existe aluno com esta matrícula.'
-          return
-        }
-        state.alunos.push({id:seqAluno++,nome,matricula,turma})
-      }
-      $('#formAluno').reset(); $('#alunoId').value=''
-      setScreen('tela-consulta-alunos')
-    })
-    $('#btnCancelarAluno').addEventListener('click',()=>{
-      $('#formAluno').reset(); $('#alunoId').value=''
-      setScreen('tela-consulta-alunos')
-    })
-
-    // Registro de faltas
-    function fillCombos(){
-      $('#faltaAluno').innerHTML = state.alunos.map(a=>`<option value="${a.id}">${a.nome} (${a.matricula})</option>`).join('')
-      $('#histAluno').innerHTML = '<option value="">Todos</option>' + state.alunos.map(a=>`<option value="${a.id}">${a.nome}</option>`).join('')
-    }
-    $('#formFalta').addEventListener('submit', e=>{
-      e.preventDefault()
-      const alunoId=+$('#faltaAluno').value
-      const data=$('#faltaData').value
-      const sit=[...document.querySelectorAll('[name=situacao]')].find(r=>r.checked).value
-      state.faltas.push({id:seqFalta++,alunoId,data,situacao:sit})
-      $('#formFalta').reset()
-      $('#hintFalta').textContent='Registro salvo.'
-    })
-
-    // Histórico
-    function renderHistorico(){
-      const aid=$('#histAluno').value
-      const turma=$('#histTurma').value.toLowerCase()
-      const de=$('#histDe').value, ate=$('#histAte').value
-      $('#tbodyHistorico').innerHTML = state.faltas
-        .filter(f=>{
-          const a=state.alunos.find(x=>x.id==f.alunoId)
-          if(aid && a.id!=aid) return false
-          if(turma && !a.turma.toLowerCase().includes(turma)) return false
-          if(de && f.data<de) return false
-          if(ate && f.data>ate) return false
-          return true
-        })
-        .map(f=>{
-          const a=state.alunos.find(x=>x.id==f.alunoId)
-          return `<tr>
-            <td>${fmt.format(new Date(f.data))}</td>
-            <td>${a.nome}</td>
-            <td>${a.matricula}</td>
-            <td>${a.turma}</td>
-            <td><span class="badge ${f.situacao==='FALTA'?'no':'ok'}">${f.situacao}</span></td>
-          </tr>`
-        }).join('')
-    }
-    $('#btnFiltrarHist').addEventListener('click', renderHistorico)
-    $('#btnLimparHist').addEventListener('click', ()=>{
-      $('#histAluno').value='';$('#histTurma').value='';$('#histDe').value='';$('#histAte').value=''
-      renderHistorico()
-    })
-
-    // Relatórios
-    function gerarRelatorios(){
-      const de=$('#repDe').value, ate=$('#repAte').value
-      const statsAluno={}
-      const statsTurma={}
-      state.alunos.forEach(a=>{
-        statsAluno[a.id]={aluno:a,p:0,f:0}
-      })
-      state.faltas.forEach(f=>{
-        if(de && f.data<de) return
-        if(ate && f.data>ate) return
-        const st=statsAluno[f.alunoId]
-        if(!st) return
-        if(f.situacao==='PRESENCA') st.p++
-        else st.f++
-      })
-      $('#tbodyRepAluno').innerHTML = Object.values(statsAluno).map(st=>`
-        <tr>
-          <td>${st.aluno.nome}</td>
-          <td>${st.aluno.turma}</td>
-          <td>${st.p}</td>
-          <td>${st.f}</td>
-        </tr>`).join('')
-      // por turma
-      state.alunos.forEach(a=>{
-        if(!statsTurma[a.turma]) statsTurma[a.turma]={turma:a.turma,p:0,f:0}
-      })
-      state.faltas.forEach(f=>{
-        if(de && f.data<de) return
-        if(ate && f.data>ate) return
-        const a=state.alunos.find(x=>x.id==f.alunoId)
-        const st=statsTurma[a.turma]
-        if(f.situacao==='PRESENCA') st.p++
-        else st.f++
-      })
-      $('#tbodyRepTurma').innerHTML = Object.values(statsTurma).map(st=>`
-        <tr>
-          <td>${st.turma}</td>
-          <td>${st.p}</td>
-          <td>${st.f}</td>
-        </tr>`).join('')
-    }
-    $('#btnGerarRel').addEventListener('click', gerarRelatorios)
-
-    // Login (simples)
-    $('#formLogin').addEventListener('submit',e=>{
-  e.preventDefault();
-  const email=$('#loginEmail').value;
-  const senha=$('#loginSenha').value;
-  const u=state.users.find(x=>x.email===email&&x.senha===senha);
-  if(u){state.logged=true; $('#hintLogin').textContent='Login OK'; setupNav(); setScreen('tela-consulta-alunos');}
-  else $('#hintLogin').textContent='E-mail ou senha inválidos!';
-});
-
-$('#formUsuario').addEventListener('submit',e=>{
-  e.preventDefault();
-  const nome=$('#usuarioNome').value, email=$('#usuarioEmail').value, senha=$('#usuarioSenha').value, tipo=$('#usuarioTipo').value;
-  if(state.users.some(x=>x.email===email)){$('#hintUsuario').textContent='E-mail já cadastrado'; return;}
-  state.users.push({nome,email,senha,tipo});
-  localStorage.setItem("usuarios", JSON.stringify(state.users));
-  $('#hintUsuario').textContent='Usuário cadastrado';
-  e.target.reset();
-});
-
-$('#btnEsqueci').addEventListener('click',()=>{
-  const email=prompt("Digite seu e-mail:");
-  if(!email) return;
-  const u=state.users.find(x=>x.email===email);
-  if(u) alert(`Link de recuperação enviado para ${email}`);
-  else alert("E-mail não cadastrado!");
-});
-
-    // Inicialização
-    document.getElementById("year").textContent=new Date().getFullYear()
-    setScreen('tela-login')
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

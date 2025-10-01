@@ -1,0 +1,97 @@
+:root{
+      --bg:#f50000;
+      --panel:#ffffff;
+      --muted:#e9edf1;
+      --text:#242323;
+      --soft:#000000;
+      --brand:#a76529;
+      --accent:#e7e5e5;
+      --danger:#ef4444;
+      --warn:#533e29;
+      --ok:#ffffff;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#e6e6e6 0%, #68698f 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;color:var(--text);}
+    header{position:sticky;top:0;z-index:5;background:rgba(201, 202, 207, 0.7);backdrop-filter: blur(8px);border-bottom:1px solid rgba(240, 234, 234, 0.05);}
+    .bar{max-width:1200px;margin:auto;display:flex;align-items:center;gap:16px;padding:14px 20px}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.4px}
+    .logo .dot{width:12px;height:12px;border-radius:999px;background:radial-gradient(circle at 30% 30%, #000000 0, #ffffff 40%, #020202 60%, #ffffff 100%);box-shadow:0 0 20px rgba(34,197,94,.5)}
+    .spacer{flex:1}
+    nav{display:flex;flex-wrap:wrap;gap:8px}
+    nav button{background:transparent;border:1px solid rgba(216, 90, 90, 0.15);color:var(--text);padding:8px 12px;border-radius:12px;cursor:pointer}
+    nav button.active, nav button:hover{border-color:var(--accent);box-shadow:0 0 0 2px rgba(183, 187, 190, 0.15) inset}
+    .logo-image{height: 100%;width: 80%;}
+
+    .wrap {
+  max-width: 1200px; /* limita em desktop */
+  margin: 22px auto;
+  padding: 0 16px;
+  width: 100%; /* garante que preencha qualquer tela */
+}
+nav button {
+  flex: 1; /* distribui */
+  min-width: 120px;
+  text-align: center;
+}
+
+.tablewrap {
+  overflow-x: auto;
+}
+table {
+  min-width: 600px; /* evita encolher demais */
+}
+
+
+    .grid {
+  display: grid;
+  grid-template-columns: 1fr; /* padrão mobile: 1 coluna */
+  gap: 16px;
+}
+
+@media(min-width:768px) {
+  .grid {
+    grid-template-columns: 240px 1fr; /* em telas médias p/ cima */
+  }
+}
+
+
+    .side{position:sticky; top:80px; align-self:start; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:14px; border-radius:var(--radius); box-shadow: var(--shadow)}
+    .side h3{margin:6px 6px 10px;font-size:0.9rem;font-weight:700;color:var(--text);opacity:.9}
+    .menu{display:grid; gap:8px}
+    .menu button{all:unset; display:block; padding:10px 12px; border-radius:12px; cursor:pointer; color:#535252}
+    .menu button:hover, .menu button.active{background:rgba(96,165,250,.12); color:#e5f1ff}
+
+    .panel{background:rgba(255, 250, 250, 0.03); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow: var(--shadow); padding:18px}
+    .title{display:flex; align-items:center; gap:10px; margin:0 0 14px}
+    .title .pill{font-size:12px; padding:4px 8px; border:1px solid rgba(255,255,255,.15); border-radius:999px; color:#cbd5e1}
+
+    form{display:grid; gap:12px}
+    .row{display:grid; gap:12px}
+    @media(min-width:640px){.row{grid-template-columns: repeat(2, 1fr)}}
+    label{font-size:12px; color:#000000}
+    input, select{width:100%; background:var(--panel); color:var(--text); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px; outline:none}
+    input:focus, select:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(96,165,250,.15)}
+
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{border:0; border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:600;}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), #472e0c); color:#fffdfb}
+    .btn.secondary{background:rgba(68, 62, 62, 0.986); color:#f3f1f1}
+    .btn.danger{background:rgba(0, 0, 0, 0.18); color:#fecaca}
+    .btn:hover{filter:brightness(1.05)}
+
+    table{width:100%; border-collapse: collapse; overflow:hidden; border-radius:12px; font-size:14px}
+    thead{background:rgba(255,255,255,.05)}
+    th, td{padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.06); text-align:left}
+    tbody tr:hover{background:rgba(255,255,255,.03)}
+    .badge{display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,.15)}
+    .badge.ok{background:rgba(16,185,129,.15); color:#bbf7d0}
+    .badge.no{background:rgba(239,68,68,.15); color:#fecaca}
+
+    .hidden{display:none !important}
+    .hint{font-size:12px; color:#9ca3af}
+    .search{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+
+    footer{opacity:.7; font-size:12px; text-align:center; padding:24px 0}
