@@ -2,8 +2,8 @@ const state = {
   logged: false,
   current: 'tela-login',
   users: JSON.parse(localStorage.getItem("usuarios") || "[]"),
-  alunos: [],
-  faltas: []
+  alunos: JSON.parse(localStorage.getItem("alunos") || "[]"),
+  faltas: JSON.parse(localStorage.getItem("faltas") || "[]"),
 };
 let seqAluno = state.alunos.length + 1;
 let seqFalta = 1;
@@ -107,8 +107,10 @@ $('#formFalta').addEventListener('submit', e => {
   const data = $('#faltaData').value;
   const sit = [...document.querySelectorAll('[name=situacao]')].find(r => r.checked).value;
   state.faltas.push({ id: seqFalta++, alunoId, data, situacao: sit });
+  localStorage.setItem('faltas', JSON.stringify(state.faltas));
   $('#formFalta').reset();
   $('#hintFalta').textContent = 'Registro salvo.';
+
 });
 
 // Histórico
@@ -135,6 +137,7 @@ function renderHistorico() {
         <td><span class="badge ${f.situacao==='FALTA'?'no':'ok'}">${f.situacao}</span></td>
       </tr>`;
     }).join('');
+    
 }
 $('#btnFiltrarHist').addEventListener('click', renderHistorico);
 $('#btnLimparHist').addEventListener('click', () => {
