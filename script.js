@@ -85,6 +85,8 @@ $('#formAluno').addEventListener('submit', e => {
       return;
     }
     state.alunos.push({ id: seqAluno++, nome, matricula, turma });
+    localStorage.setItem('alunos', JSON.stringify(state.alunos));
+
   }
   $('#formAluno').reset(); $('#alunoId').value = '';
   setScreen('tela-consulta-alunos');
@@ -219,6 +221,10 @@ $('#formLogin').addEventListener('submit', e => {
   } else {
     $('#hintLogin').textContent = 'E-mail ou senha inválidos!';
   }
+const alunosSalvos = JSON.parse(localStorage.getItem('alunos')) || [];
+state.alunos = alunosSalvos;
+renderAlunos();
+
 });
 
 // Inicialização
