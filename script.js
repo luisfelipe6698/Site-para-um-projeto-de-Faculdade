@@ -6,7 +6,7 @@ const state = {
   faltas: JSON.parse(localStorage.getItem("faltas") || "[]"),
 };
 let seqAluno = state.alunos.length + 1;
-let seqFalta = 1;
+let seqFalta = state.faltas.length + 1;
 
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
@@ -110,7 +110,6 @@ $('#formFalta').addEventListener('submit', e => {
   localStorage.setItem('faltas', JSON.stringify(state.faltas));
   $('#formFalta').reset();
   $('#hintFalta').textContent = 'Registro salvo.';
-
 });
 
 // Histórico
@@ -119,7 +118,7 @@ function renderHistorico() {
   const turma = $('#histTurma').value.toLowerCase();
   const de = $('#histDe').value, ate = $('#histAte').value;
   $('#tbodyHistorico').innerHTML = state.faltas
-    /*.filter(f => {
+    .filter(f => {
       const a = state.alunos.find(x => x.id == f.alunoId);
       if (aid && a.id != aid) return false;
       if (turma && !a.turma.toLowerCase().includes(turma)) return false;
@@ -127,10 +126,10 @@ function renderHistorico() {
       if (ate && f.data > ate) return false;
       return true;
     })
-    */.map(f => {
+    .map(f => {
       const a = state.alunos.find(x => x.id == f.alunoId);
       return `<tr>
-        <td>${fmt.format(new Date(f.data))}</td>
+        <td>${(new Date(f.data)).toLocaleDateString()}</td>
         <td>${a.nome}</td>
         <td>${a.matricula}</td>
         <td>${a.turma}</td>
