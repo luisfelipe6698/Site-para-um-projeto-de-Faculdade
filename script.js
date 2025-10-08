@@ -119,7 +119,7 @@ function renderHistorico() {
   const turma = $('#histTurma').value.toLowerCase();
   const de = $('#histDe').value, ate = $('#histAte').value;
   $('#tbodyHistorico').innerHTML = state.faltas
-    .filter(f => {
+    /*.filter(f => {
       const a = state.alunos.find(x => x.id == f.alunoId);
       if (aid && a.id != aid) return false;
       if (turma && !a.turma.toLowerCase().includes(turma)) return false;
@@ -127,7 +127,7 @@ function renderHistorico() {
       if (ate && f.data > ate) return false;
       return true;
     })
-    .map(f => {
+    */.map(f => {
       const a = state.alunos.find(x => x.id == f.alunoId);
       return `<tr>
         <td>${fmt.format(new Date(f.data))}</td>
